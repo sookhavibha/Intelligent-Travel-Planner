@@ -18,19 +18,19 @@ export default function WelcomeScreen() {
       {/* Logo */}
       <Image
   source={require("../assets/Altavia logo.png")}
-  className="mb-6"
+  className="mb-1"
   style={{ width: 224, height: 224 }} // twice 112
   resizeMode="contain"
 />
 
       {/* App Name */}
-      <Text className="text-3xl font-bold text-neutral-900 mb-1">
+      <Text className="text-6xl font-bold text-text-primary mb-1.5">
         Altavia
       </Text>
 
       {/* Slogan */}
-      <Text className="text-base text-gray-600">
-        Your AI-powered travel planning Assistant"
+      <Text className="text-base text-gray-900">
+        Your AI-powered travel planning Assistant
       </Text>
     </SafeAreaView>
   );
