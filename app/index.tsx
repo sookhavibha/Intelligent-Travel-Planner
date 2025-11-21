@@ -1,17 +1,20 @@
+import { useRouter } from "expo-router";
+import { useEffect } from "react";
 import { Image, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+
 import "../global.css";
 
 export default function WelcomeScreen() {
-  // const router = useRouter();
+  const router = useRouter();
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     router.replace("/(auth)/sign-up");
-  //   }, 2500);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      router.replace("/(auth)/sign-up");
+    }, 2500);
 
-  //   return () => clearTimeout(timer);
-  // }, []);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <SafeAreaView className="flex-1 bg-white justify-center items-center px-100">
