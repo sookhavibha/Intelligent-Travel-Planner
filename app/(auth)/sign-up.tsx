@@ -20,6 +20,8 @@ if (Platform.OS === "android" && UIManager.setLayoutAnimationEnabledExperimental
 
 const SignUpScreen: React.FC = () => {
   const [showEmailForm, setShowEmailForm] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const revealEmailForm = () => {
     LayoutAnimation.easeInEaseOut();
@@ -35,21 +37,13 @@ const SignUpScreen: React.FC = () => {
         contentContainerStyle={styles.container}
         keyboardShouldPersistTaps="handled"
       >
-        
-
         {/* Logo */}
         <Image
           source={require("../../assets/AppLogo.png")}
           style={styles.logo}
         />
 
-        {/* Facebook Button */}
-        <TouchableOpacity style={styles.socialButton}>
-          <View style={styles.iconCircle}>
-            <Text style={{ color: "#1877F2", fontSize: 22 }}>f</Text>
-          </View>
-          <Text style={styles.socialText}>Sign up with Facebook</Text>
-        </TouchableOpacity>
+        
 
         {/* Google Button */}
         <TouchableOpacity style={styles.socialButton}>
@@ -59,18 +53,16 @@ const SignUpScreen: React.FC = () => {
           <Text style={styles.socialText}>Sign up with Google</Text>
         </TouchableOpacity>
 
-        {/* Divider appears only when email form is shown */}
-        {showEmailForm && (
-          <View style={styles.dividerRow}>
-            <View style={styles.line} />
-            <Text style={styles.orText}>or</Text>
-            <View style={styles.line} />
-          </View>
-        )}
-
-        {/* Email form */}
+        {/* Show divider + form only if email form is revealed */}
         {showEmailForm && (
           <>
+            <View style={styles.dividerRow}>
+              <View style={styles.line} />
+              <Text style={styles.orText}>or</Text>
+              <View style={styles.line} />
+            </View>
+
+            {/* Email Input */}
             <View style={styles.inputContainer}>
               <Text style={styles.inputLabel}>Email</Text>
               <TextInput
@@ -78,25 +70,31 @@ const SignUpScreen: React.FC = () => {
                 placeholder="Email"
                 keyboardType="email-address"
                 autoCapitalize="none"
+                value={email}
+                onChangeText={setEmail}
               />
             </View>
 
+            {/* Password Input */}
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.input}
                 secureTextEntry
                 placeholder="Password"
+                value={password}
+                onChangeText={setPassword}
               />
               <Text style={styles.eyeIcon}>👁️</Text>
             </View>
 
+            {/* Submit Button */}
             <TouchableOpacity style={styles.submitButton}>
               <Text style={styles.submitText}>Sign up with email</Text>
             </TouchableOpacity>
           </>
         )}
 
-        {/* Main "Sign up with email" button when form is hidden */}
+        {/* Show reveal button first */}
         {!showEmailForm && (
           <TouchableOpacity style={styles.emailButton} onPress={revealEmailForm}>
             <Text style={styles.emailText}>Sign up with email</Text>
@@ -123,13 +121,12 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
 
-
   logo: {
     width: 210,
-    height: 80,
+    height: 100,
     resizeMode: "contain",
     marginBottom: 40,
-    marginTop:10,
+    marginTop: 10,
   },
 
   socialButton: {
@@ -142,6 +139,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#ddd",
     marginBottom: 15,
+    marginTop: 50,
+   
   },
 
   iconCircle: {
@@ -163,7 +162,7 @@ const styles = StyleSheet.create({
   },
 
   emailButton: {
-    marginTop: 30,
+    marginTop:10,
     width: "100%",
     paddingVertical: 15,
     borderRadius: 40,
@@ -248,7 +247,7 @@ const styles = StyleSheet.create({
   },
 
   signInLink: {
-    color: "#00BBFF",
+    color: "#ed787a",
     fontWeight: "700",
   },
 });
