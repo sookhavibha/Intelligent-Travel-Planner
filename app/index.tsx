@@ -29,8 +29,8 @@ export default function WelcomeScreen() {
       </Text>
 
       {/* Slogan */}
-      <Text className="text-base text-gray-900">
-        Your AI-powered travel planning Assistant
+      <Text className="text-base font-bold text-gray-500">
+        Your AI-powered Travel Planning Assistant
       </Text>
     </SafeAreaView>
   );
